@@ -1,7 +1,8 @@
 require "test/unit"
-require "xycut"
+require "xycut_slicer"
+require "bounding_box"
 
-class TestXYCutSlicer < Unit::Test::TestCase
+class TestXYCutSlicer < Test::Unit::TestCase
   def setup
     @example_bbs = [
       BoundingBox.new(0, 0, 3, 5),
@@ -13,13 +14,13 @@ class TestXYCutSlicer < Unit::Test::TestCase
   end
 
   def test_new_with_default_options
-    seg = XYCutSlicer.new(bbs)
+    seg = XYCutSlicer.new(@example_bbs)
     seg.process
     skip
   end
 
   def test_with_larger_min_gap_width
-    seg = XYCutSlicer.new(bbs, :min_gap_width => 6)
+    seg = XYCutSlicer.new(@example_bbs, :min_gap_width => 6)
     seg.process
     skip
   end

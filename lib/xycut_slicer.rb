@@ -1,3 +1,5 @@
+require "slicer"
+
 class XYCutSlicer < Slicer
   attr_accessor :min_width_gap
 
@@ -20,9 +22,9 @@ class XYCutSlicer < Slicer
 
 private
   def build_projection_profiles(bounding_boxes)
-    max_width_bb  = bounding_boxes.max { |a, b| (a.x + a.width)  <=> (b.x + b.width) }
+    max_width_bb  = bounding_boxes.max { |a, b| (a.x + a.width)  <=> (b.x + b.width)  }
     max_height_bb = bounding_boxes.max { |a, b| (a.y + a.height) <=> (b.y + b.height) }
-    max_width = max_width_bb.x + max_width_bb.width
+    max_width  = max_width_bb.x + max_width_bb.width
     max_height = max_height_bb.y + max_height_bb.height
 
     pp_horizontal = [0] * max_height
